@@ -1,0 +1,12 @@
+---@alias stateType
+---| '"ACTIONSELECT"' # While in this state, you can select FIGHT/ACT/ITEM/MERCY.
+---| '"ENEMYDIALOGUE"' # When starting this state, currentdialogue gets read from the Encounter script for every monster and their dialogue is displayed.
+---| '"DEFENDING"' # When starting this state, nextwaves is read out from the Encounter script and all scripts in the Waves folder with matching names will be part of this defense step.
+---| '"ATTACKING"' # Starting this state will put you in the screen where you either deal damage to an enemy by pressing "Z" at the right time, or you wait and miss entirely.
+---| '"ENEMYSELECT'" # This state displays a list of all active enemies in the encounter. This state gets entered automatically after choosing FIGHT or ACT.
+---| '"ACTMENU"' # This state displays all of the options from the enemy's commands in order.
+---| '"ITEMMENU"' # This state shows all of the player's available items. Tied with the HandleItem function.
+---| '"MERCYMENU"' # This state lets you choose from either "Spare" or "Flee".
+---| '"DIALOGRESULT"' # This is the state that is entered whenever BattleDialog is called, when the victory message displays, when the player fails to flee, or when an item is used.
+---| '"DONE"' # Changing state to DONE will instantly end the current battle.
+---| '"NONE"' # This state does nothing. It is entered for the first frame of the encounter, but entering it manually will completely freeze your encounter. It might be useful if you want to disable all of Unitale/CYF's basic functionality.

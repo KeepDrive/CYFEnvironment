@@ -10,7 +10,7 @@ Create Your Frisk environment/library for sumneko/lua-language-server
 - io library disabled entirely
 - debug library partly marked as deprecated
 ## Create Your Frisk
-Not started
+- Events
 
 # TODO
 ## MoonSharp
