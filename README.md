@@ -11,6 +11,8 @@ Create Your Frisk environment/library for sumneko/lua-language-server
 - debug library partly marked as deprecated
 ## Create Your Frisk
 - Events
+- Variables
+- Functions
 
 # TODO
 ## MoonSharp
