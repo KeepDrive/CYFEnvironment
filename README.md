@@ -13,6 +13,7 @@ Create Your Frisk environment/library for sumneko/lua-language-server
 - Events
 - Variables
 - Functions
+- Player object
 
 # TODO
 ## MoonSharp
