@@ -106,4 +106,6 @@ function Player.MultiTarget(targetIDs, damage) end
 ---@param damage? number[]|number regular damage by default
 function Player.ForceMultiAttack(targetIDs, damage) end
 ---Checks if the enemies are dead after a forced attack.
+---@return boolean
+---@nodiscard
 function Player.CheckDeath() end
