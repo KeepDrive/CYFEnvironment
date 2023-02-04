@@ -80,7 +80,7 @@ function Player.SetMaxHPShift(shift, invulnerabilitySeconds, set, canHeal, playS
 ---@param resetDEF? boolean true by default. If true, the player's DEF will be set back to what it should be based on the player's LV.
 function Player.ResetStats(resetMHP, resetATK, resetDEF) end
 ---Sets the animation used when attacking an enemy. Use it like sprite.SetAnimation().
----@param anim <string>[]
+---@param anim string[]
 ---@param frequency number
 ---@param prefix? string
 function Player.SetAttackAnim(anim, frequency, prefix) end
@@ -96,14 +96,14 @@ function Player.ChangeTarget(targetNumber) end
 function Player.ForceAttack(enemyID, damage) end
 ---The next attack the player executes will attack the enemies contained in targetIDs and deal damage damage. If you put nothing as a parameter, this will attack all enemies with the normal damage calculations.
 ---Each target needs to have one damage value if you use a table of numbers for the damage value, or all targets can share the same damage value if the damage value is a simple number.
----@param targetIDs? <integer>[] can be omitted if damage is a number. Contains all IDs by default.
----@param damage? <number>[]|number equals regular damage by default
+---@param targetIDs? integer[] can be omitted if damage is a number. Contains all IDs by default.
+---@param damage? number[]|number equals regular damage by default
 function Player.MultiTarget(targetIDs, damage) end
 ---Forces an attack towards the enemies contained in targetIDs and deals damage damage. If you put nothing as a parameter, this will attack all enemies with the normal damage calculations.
 ---Each target needs to have one damage value if you use a table of numbers for the damage value, or all targets can share the same damage value if the damage value is a simple number.
 ---If you want enemies to be able to die this way, you MUST check with Player.CheckDeath!
----@param targetIDs? <integer>[] can be omitted if damage is a number. Contains all IDs by default
----@param damage? <number>[]|number regular damage by default
+---@param targetIDs? integer[] can be omitted if damage is a number. Contains all IDs by default
+---@param damage? number[]|number regular damage by default
 function Player.ForceMultiAttack(targetIDs, damage) end
 ---Checks if the enemies are dead after a forced attack.
 function Player.CheckDeath() end

@@ -42,19 +42,19 @@ LTSversion = nil
 ---@type string
 encountertext = nil
 ---Encounter: A list of all simultaneous attack waves you want when the monsters start their attacks. You can modify this at any time, and it'll get read out before the enemies start their attack. For most boss-type encounters, you'll likely only want one wave simultaneously - but you can get creative here.
----@type <string>[]
+---@type string[]
 nextwaves = nil
 ---Encounter: How long it takes for the defending step to end.
 wavetimer = 4.0
 ---Encounter: The inner size of the box the player's constrained to. {155, 130} is the default size for a lot of basic Undertale encounters. Papyrus' battle, for instance, has this at {245, 130} most of the time. You may modify this at any time - it'll only get read out before the enemies start their attack.
 ---Note: lowest possible setting is {16, 16} - this is the size of the player's soul. Anything lower will be set to 16 anyway.
----@type <number>[]
+---@type number[]
 arenasize = {155, 130}
 ---Encounter: Defines the names of your enemy scripts that will be used in your encounter. After initialization, the names will be replaced by Script controller objects you can use to control your monster scripts.
----@type <string|Script>[]
+---@type string[]|Script[]
 enemies = nil
 ---Encounter: Defines where the enemies are on the screen. {0, 0} means they're centered just above the arena, with 1 pixel of space inbetween. You will always need at least as many enemy positions as enemies in your encounter.
----@type <<number>[]>[]
+---@type number[][]
 enemypositions = nil
 ---Encounter: If this value is set to true, the auto linebreak system will automatically add line breaks (\r) to the text.
 autolinebreak = false
@@ -68,20 +68,20 @@ flee = true
 ---@type boolean
 fleesuccess = nil
 ---Encounter: If you set this to a table filled with strings, a random one of your strings will be displayed whenever the player flees the battle (if that's enabled).
----@type <string>[]
+---@type string[]
 fleetexts = nil
 ---Encounter: If this variable is set to true, the player will be revived when they hit 0 HP.
 ---By default, there will be no special text for the player being revived; however, if you set deathtext, that will be used.
 revive = nil
 ---Encounter: Text displayed when the player dies, in the Game Over screen. By default, it'll use the normal death text.
 ---This text is also used if the player gets revived while revive is true. Otherwise, there is no revive text.
----@type <string>[]
+---@type string[]
 deathtext = nil
 ---Encounter: Sets the death music. The music is played if revive is not set.
 ---@type string
 deathmusic = nil
 ---Encounter: A table containing the current wave scripts used. Is empty if not in DEFENDING state.
----@type <Script>[]
+---@type Script[]
 Wave = nil
 ---Encounter: If this variable is set to true, the rotation of any child sprite with a rotated parent will no longer be reset after either changing its sprite in any way or scaling it.
 noscalerotationbug = false
@@ -89,18 +89,18 @@ noscalerotationbug = false
 --Monster
 
 ---A list of random comments attached to this monster. You can retrieve one at random using the RandomEncounterText() function in your Encounter script.
----@type <string>[]
+---@type string[]
 comments = nil
 ---A list of ACT commands you can do. Listed in the ACT menu and used in HandleCustomCommand(). Note that the behaviour for Check is built-in, and shows you the monster's name followed by the ATK and DEF, and then the check variable you'll see all the way down.
----@type <string>[]
+---@type string[]
 command = nil
 ---A list of random dialogue the monster can have. One of these is selected at random if currentdialogue is nil.
 ---The dialogue bubble will not be shown so long as it has no displayable letters. Set randomdialogue to a line with only text commands, such as "[noskip][next]", to use this to your advantage.
----@type <string>[]
+---@type string[]
 randomdialogue = nil
 ---The next dialogue for this monster. This overrides the random dialogue and is meant for special actions (e.g. you hit Vegetoid's green carrots after selecting Dinner from the ACT menu). This variable gets cleared every time after it's read out in the monster dialogue phase.
 ---The dialogue bubble will not be shown so long as it has no displayable letters. Set currentdialogue to a line with only text commands, such as "[noskip][next]", to use this to your advantage.
----@type <string>[]
+---@type string[]
 currentdialogue = nil
 ---The text which will be displayed if the Player's attack is successful but deals 0 damage.
 defensemisstext = "MISS"

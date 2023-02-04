@@ -70,11 +70,11 @@ function AllowPlayerDef(bool) end
 function SetPPCollision(bool) end
 ---This makes the list of strings you give to the function appear in the UI dialog box. After skipping through them, you will automatically go to the monster dialogue step by default.
 ---As of CYF v0.6.4, if you end up with 4 or more lines of battle dialog displayed at once, the text will move up (9 pixels, one time) to compensate and try to fit your text inside the box.
----@param list_of_strings <string>[]
+---@param list_of_strings string[]
 function BattleDialogue(list_of_strings) end
 ---This makes the list of strings you give to the function appear in the UI dialog box. After skipping through them, you will automatically go to the monster dialogue step by default.
 ---As of CYF v0.6.4, if you end up with 4 or more lines of battle dialog displayed at once, the text will move up (9 pixels, one time) to compensate and try to fit your text inside the box.
----@param list_of_strings <string>[]
+---@param list_of_strings string[]
 function BattleDialog(list_of_strings) end
 ---This function creates a custom state with the name name, which will function like the NONE state. You cannot have two states with the same name.
 ---@param name string
