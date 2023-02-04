@@ -16,6 +16,7 @@ Create Your Frisk environment/library for sumneko/lua-language-server
 - Player object
 - Script object
 - Audio/NewAudio objects
+- Input object
 
 # TODO
 ## MoonSharp
