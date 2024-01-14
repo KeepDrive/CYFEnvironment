@@ -1,26 +1,16 @@
 {
-  "configs": [
-    {
-      "action": "set",
-      "key": "Lua.runtime.version",
-      "value": "Lua 5.2"
-    },
-    {
-      "action": "prop",
-      "key": "Lua.runtime.nonstandardSymbol",
-      "value": ["!="]
-    },
-    {
-      "action": "prop",
-      "key": "Lua.runtime.builtin",
-      "prop": "io",
-      "value": "disable"
+  "settings": {
+    "Lua.runtime.version": "Lua 5.2",
+    "Lua.runtime.nonstandardSymbol": "!=",
+    "Lua.runtime.builtin": {
+      "io": "disable"
     }
-  ],
+  },
   "files": [
-    "Lua/Encounters/.*%.lua",
-    "Lua/Monsters/.*%.lua",
-    "Lua/Waves/.*%.lua"
+    "Lua/Libraries",
+    "Lua/Encounters",
+    "Lua/Monsters",
+    "Lua/Waves"
   ],
   "name": "Create Your Frisk Environment"
 }
