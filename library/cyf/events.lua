@@ -1,11 +1,102 @@
----@meta
+---#if not CYF then DISABLE() end
+---@meta cyfEvents
+---#SETDOC 'cyf-api-events'
 
----Every time a bullet collides with a player, this function gets called from the script that created the projectile. The bullet object in this function can be modified if you feel like it.
----If you implement this function in your script, you have to manually define what should happen after bullet collision. This is what allows you to create orange, cyan and green projectiles, and much much more. If you don't implement this function in your script, it'll stick to the default of dealing 3 damage on hit.
----@param bullet Bullet
+---@alias enterstate
+---| '"ACTIONSELECT"' # ---#DESTAIL 'EnteringState.ACTIONSELECT'
+---| '"ATTACKING"' # ---#DESTAIL 'EnteringState.ATTACKING'
+---| '"DEFENDING"' # ---#DESTAIL 'EnteringState.DEFENDING'
+---| '"ENEMYSELECT"' # ---#DESTAIL 'EnteringState.ENEMYSELECT'
+---| '"ACTMENU"' # ---#DESTAIL 'EnteringState.ACTMENU'
+---| '"ITEMMENU"' # ---#DESTAIL 'EnteringState.ITEMMENU'
+---| '"ENEMYDIALOGUE"' # ---#DESTAIL 'EnteringState.ENEMYDIALOGUE'
+---| '"DIALOGRESULT"' # ---#DESTAIL 'EnteringState.DIALOGRESULT'
+
+---#DES 'EncounterStarting'
+---@script E
+function EncounterStarting() end
+
+---#DES 'EnemyDialogueStarting'
+---@script E
+function EnemyDialogueStarting() end
+
+---#DES 'EnemyDialogueEnding'
+---@script E
+function EnemyDialogueEnding() end
+
+---#DES 'DefenseEnding'
+---@script E
+function DefenseEnding() end
+
+---#DES 'HandleSpare'
+---@script E
+function HandleSpare() end
+
+---#DES 'HandleFlee'
+---@script E
+---@param success boolean
+function HandleFlee(success) end
+
+---#DES 'HandleItem'
+---@script E
+---@param item_ID string
+---@param position integer
+function HandleItem(item_ID, position) end
+
+---#DES 'EnteringState'
+---@script E
+---@param newstate enterstate
+---@param oldstate enterstate
+function EnteringState(newstate, oldstate) end
+
+---#DES 'UpdateE'
+---@script E
+function Update() end
+
+---#DES 'BeforeDeath'
+---@script E
+function BeforeDeath() end
+
+---#DES 'OnTextDisplay'
+---@script E
+---@param text Text
+function OnTextDisplay() end
+
+---#DES 'HandleAttack'
+---@script M
+---@param damage number
+function HandleAttack(damage) end
+
+---#DES 'OnDeath'
+---@script M
+function OnDeath() end
+
+---#DES 'OnSpare'
+---@script M
+function OnSpare() end
+
+---#DES 'BeforeDamageCalculation'
+---@script M
+function BeforeDamageCalculation() end
+
+---#DES 'BeforeDamageValues'
+---@script M
+---@param damage number
+function BeforeDamageValues(damage) end
+
+---#DES 'HandleCustomCommand'
+---@script M
+---@param command string
+function HandleCustomCommand(command) end
+
+---#DES 'UpdateW'
+---@script W
+function Update() end
+
+---#DES 'EndingWave'
+---@script W
+function EndingWave() end
+
+---#DES 'OnHit'
+---@param bullet bullet
 function OnHit(bullet) end
----Every time a Text Object automatically advances to the next line of text (that's by any means except Text.NextLine()), this function gets called in the script that created the text object. This function is the best place to manipulate the letters from Text.GetLetters.
----@param text Text text object in question.
----@param final boolean true only if the text object just advanced past its last line and deleted itself now that it's finished.
----Text objects have a one-frame delay by default - see CreateText. If the text object is using this delay, then this function will additionally be called on the first frame it starts to type (so one frame after it gets created). But if you disable the one-frame delay, this function will not be called for the first line of text.
-function OnTextAdvance(text, final) end

@@ -1,22 +1,40 @@
----@meta
+---#if not CYF then DISABLE() end
+---@meta cyfScript
+---#SETDOC 'cyf-api-functions-script'
 
----@class Script
----@field scriptname string The file name of the script in question.
-local Script = {}
+---@class script: userdata
+local script
 
----Gets variable_name from the script. Same as Script[variable_name].
+---#DES 'script.GetVar'
 ---@param variable_name string
 ---@return any
 ---@nodiscard
-function Script.GetVar(variable_name) end
----Sets variable_name in the script. Same as Script[variable_name] = value.
+function script.GetVar(variable_name) end
+
+---#DES 'script.SetVar'
 ---@param variable_name string
 ---@param value any
-function Script.SetVar(variable_name, value) end
----Runs function_name from within the target script.
----@param function_name string
----@param arguments? table|any Can be omitted, be a single argument or table of arguments.
----@return any|nil
-function Script.Call(function_name, arguments) end
+function script.SetVar(variable_name, value) end
 
-Encounter = Script
+---#DES 'script.Call'
+---@param function_name string
+function script.Call(function_name) end
+
+---#DES 'script.CallArg'
+---@param function_name string
+---@param argument any
+function script.Call(function_name, argument) end
+
+---#DES 'script.CallArgs'
+---@param function_name string
+---@param arguments any[]
+function script.Call(function_name, arguments) end
+
+---#DES 'script.scriptname'
+---@type string
+script.scriptname = nil
+
+---#DES 'Encounter'
+---@script MW
+---@type script
+Encounter = nil

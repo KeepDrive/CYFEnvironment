@@ -1,45 +1,68 @@
----@meta
+---#if not CYF then DISABLE() end
+---@meta cyfAudio
+---#SETDOC 'cyf-api-functions-audio'
 
----@class Audio
----@field playtime number The current play position of the current music in seconds.
----@field totaltime number The total length of the current music in seconds.
----@field isPlaying boolean true if the music is playing, or false if the music is stopped or paused.
-Audio = {}
+---#DES 'Audio'
+---@class Audio: userdata
+Audio = nil
 
----Play the currently loaded music. Done automatically at the beginning of a fight.
+---#DES 'Audio.playtime'
+---@type number
+Audio.playtime = nil
+
+---#DES 'Audio.totaltime'
+---@type number
+Audio.totaltime = nil
+
+---#DES 'Audio.Play'
 function Audio.Play() end
----Stops the music. If you want a battle not to have music, call this in EncounterStarting().
+
+---#DES 'Audio.Stop'
 function Audio.Stop() end
----Pause the music.
+
+---#DES 'Audio.Pause'
 function Audio.Pause() end
----Unpause the music if you previously paused it.
+
+---#DES 'Audio.Unpause'
 function Audio.Unpause() end
----Set music to given volume. value should be between 0.0 (muted) and 1.0 (full volume). This is 0.75 by default.
+
+---#DES 'Audio.Volume'
 ---@param value number
 function Audio.Volume(value) end
----Set music pitch to given value. 1.0 is default, 2.0 is twice the regular speed. Negative values play the music backwards. value may be between -3.0 and 3.0.
+
+---#DES 'Audio.Pitch'
 ---@param value number
 function Audio.Pitch(value) end
----Load music from the Audio folder titled filename.ogg or filename.wav and play it immediately. If you don't want immediate playback, call Audio.Stop() after this. Don't include the file extension.
+
+---#DES 'Audio.LoadFile'
 ---@param filename string
 function Audio.LoadFile(filename) end
----Play the sound from the Sounds folder titled filename.ogg or filename.wav. Don't include the file extension.
+
+---#DES 'Audio.PlaySound'
 ---@param filename string
----@param volume? number 0.65 by default
+---@param volume? number
 function Audio.PlaySound(filename, volume) end
----Stops all playing audio.
+
+---#DES 'Audio.isPlaying'
+---@type boolean
+Audio.isPlaying = nil
+
+---#DES 'Audio.StopAll'
 function Audio.StopAll() end
----Pauses all the audio sources.
+
+---#DES 'Audio.PauseAll'
 function Audio.PauseAll() end
----Unpauses all the audio sources.
+
+---#DES 'Audio.UnpauseAll'
 function Audio.UnpauseAll() end
----Adds a sound to the sound dictionary. Doing so allows you to change the name of the sounds played by the engine.
----Setting key to "RESETDICTIONARY" will reset the entire sound dictionary to its original state.
----@param key string
+
+---#DES 'Audio.SetSoundDictionary'
+---@param key string|"RESETDICTIONARY"
 ---@param value string
 function Audio.SetSoundDictionary(key, value) end
----Returns the index of the sound in the sound dictionary. Returns the key itself if the key isn't in the dictionary. Same as Audio[key].
+
+---#DES 'Audio.GetSoundDictionary'
 ---@param key string
----@return string
+---@return integer|string indexOrKey
 ---@nodiscard
 function Audio.GetSoundDictionary(key) end

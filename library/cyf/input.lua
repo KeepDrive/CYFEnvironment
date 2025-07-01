@@ -1,175 +1,232 @@
----@meta
+---#if not CYF then DISABLE() end
+---@meta cyfInput
+---#SETDOC 'cyf-api-functions-input'
 
----@alias keyState
----| 0 # Not pressed.
----| 1 # Pressed.
----| 2 # Held.
----| -1 # Released.
+---@alias pressedState
+---| 0 # ---#DESTAIL 'pressedState[0]'
+---| 1 # ---#DESTAIL 'pressedState[1]'
+---| 2 # ---#DESTAIL 'pressedState[2]'
+---| -1 # ---#DESTAIL 'pressedState[-1]'
 
 ---@alias keyName
----| "None" # Not assigned (never returned as the result of a keystroke).
----| "Backspace" # The backspace key.
----| "Delete" # The forward delete key.
----| "Tab" # The tab key.
----| "Clear" # The Clear key.
----| "Return" # Return key.
----| "Pause" # Pause on PC machines.
----| "Escape" # Escape key.
----| "Space" # Space key.
----| "Keypad0" # Numeric keypad 0.
----| "Keypad1" # Numeric keypad 1.
----| "Keypad2" # Numeric keypad 2.
----| "Keypad3" # Numeric keypad 3.
----| "Keypad4" # Numeric keypad 4.
----| "Keypad5" # Numeric keypad 5.
----| "Keypad6" # Numeric keypad 6.
----| "Keypad7" # Numeric keypad 7.
----| "Keypad8" # Numeric keypad 8.
----| "Keypad9" # Numeric keypad 9.
----| "KeypadPeriod" # Numeric keypad '.'.
----| "KeypadDivide" # Numeric keypad '/'.
----| "KeypadMultiply" # Numeric keypad '*'.
----| "KeypadMinus" # Numeric keypad '-'.
----| "KeypadPlus" # Numeric keypad '+'.
----| "KeypadEnter" # Numeric keypad Enter.
----| "KeypadEquals" # Numeric keypad '='.
----| "UpArrow" # Up arrow key.
----| "DownArrow" # Down arrow key.
----| "RightArrow" # Right arrow key.
----| "LeftArrow" # Left arrow key.
----| "Insert" # Insert key key.
----| "Home" # Home key.
----| "End" # End key.
----| "PageUp" # Page up.
----| "PageDown" # Page down.
----| "F1" # F1 function key.
----| "F2" # F2 function key.
----| "F3" # F3 function key.
----| "F4" # F4 function key.
----| "F5" # F5 function key.
----| "F6" # F6 function key.
----| "F7" # F7 function key.
----| "F8" # F8 function key.
----| "F9" # F9 function key.
----| "F10" # F10 function key.
----| "F11" # F11 function key.
----| "F12" # F12 function key.
----| "F13" # F13 function key.
----| "F14" # F14 function key.
----| "F15" # F15 function key.
----| "Alpha0" # The '0' key on the top of the alphanumeric keyboard.
----| "Alpha1" # The '1' key on the top of the alphanumeric keyboard.
----| "Alpha2" # The '2' key on the top of the alphanumeric keyboard.
----| "Alpha3" # The '3' key on the top of the alphanumeric keyboard.
----| "Alpha4" # The '4' key on the top of the alphanumeric keyboard.
----| "Alpha5" # The '5' key on the top of the alphanumeric keyboard.
----| "Alpha6" # The '6' key on the top of the alphanumeric keyboard.
----| "Alpha7" # The '7' key on the top of the alphanumeric keyboard.
----| "Alpha8" # The '8' key on the top of the alphanumeric keyboard.
----| "Alpha9" # The '9' key on the top of the alphanumeric keyboard.
----| "Exclaim" # Exclamation mark key '!'.
----| "DoubleQuote" # Double quote key '"'.
----| "Hash" # Hash key '#'.
----| "Dollar" # Dollar sign key '$'.
----| "Percent" # Percent '%' key.
----| "Ampersand" # Ampersand key '&amp;'.
----| "Quote" # Quote key '.
----| "LeftParen" # Left Parenthesis key '('.
----| "RightParen" # Right Parenthesis key ')'.
----| "Asterisk" # Asterisk key '*'.
----| "Plus" # Plus key '+'.
----| "Comma" # Comma ',' key.
----| "Minus" # Minus '-' key.
----| "Period" # Period '.' key.
----| "Slash" # Slash '/' key.
----| "Colon" # Colon ':' key.
----| "Semicolon" # Semicolon ';' key.
----| "Less" # Less than '&lt;' key.
----| "Equals" # Equals '=' key.
----| "Greater" # Greater than '&gt;' key.
----| "Question" # Question mark '?' key.
----| "At" # At key '@'.
----| "LeftBracket" # Left square bracket key '['.
----| "Backslash" # Backslash key ''.
----| "RightBracket" # Right square bracket key ']'.
----| "Caret" # Caret key '^'.
----| "Underscore" # Underscore '_' key.
----| "BackQuote" # Back quote key '`'.
----| "A" # 'a' key.
----| "B" # 'b' key.
----| "C" # 'c' key.
----| "D" # 'd' key.
----| "E" # 'e' key.
----| "F" # 'f' key.
----| "G" # 'g' key.
----| "H" # 'h' key.
----| "I" # 'i' key.
----| "J" # 'j' key.
----| "K" # 'k' key.
----| "L" # 'l' key.
----| "M" # 'm' key.
----| "N" # 'n' key.
----| "O" # 'o' key.
----| "P" # 'p' key.
----| "Q" # 'q' key.
----| "R" # 'r' key.
----| "S" # 's' key.
----| "T" # 't' key.
----| "U" # 'u' key.
----| "V" # 'v' key.
----| "W" # 'w' key.
----| "X" # 'x' key.
----| "Y" # 'y' key.
----| "Z" # 'z' key.
----| "LeftCurlyBracket" # Left curly bracket key '{'.
----| "Pipe" # Pipe '|' key.
----| "RightCurlyBracket" # Right curly bracket key '}'.
----| "Tilde" # Tilde '~' key.
----| "Numlock" # Numlock key.
----| "CapsLock" # Capslock key.
----| "ScrollLock" # Scroll lock key.
----| "RightShift" # Right shift key.
----| "LeftShift" # Left shift key.
----| "RightControl" # Right Control key.
----| "LeftControl" # Left Control key.
----| "RightAlt" # Right Alt key.
----| "LeftAlt" # Left Alt key.
----| "LeftCommand" # Left Command key.
----| "LeftApple" # Left Command key.
----| "LeftWindows" # Left Windows key.
----| "RightCommand" # Right Command key.
----| "RightApple" # Right Command key.
----| "RightWindows" # Right Windows key.
----| "AltGr" # Alt Gr key.
----| "Help" # Help key.
----| "Print" # Print key.
----| "SysReq" # Sys Req key.
----| "Break" # Break key.
----| "Menu" # Menu key.
----| "Mouse0" # The Left (or primary) mouse button.
----| "Mouse1" # Right mouse button (or secondary mouse button).
----| "Mouse2" # Middle mouse button (or third button).
----| "Mouse3" # Additional (fourth) mouse button.
----| "Mouse4" # Additional (fifth) mouse button.
----| "Mouse5" # Additional (or sixth) mouse button.
----| "Mouse6" # Additional (or seventh) mouse button.
+---#DES 'keyName.alphabet'
+---#DES 'keyName.numbers'
+---#DES 'keyName.functionKeys'
+---#DES 'keyName.keyPad'
+---#DES 'keyName.arrows'
+---#DES 'keyName.special'
+---#DES 'keyName.misc'
+---#DES 'keyName.mouse'
+--[=[
+keyName.alphabet = [[
+| '"A"'
+| '"B"'
+| '"C"'
+| '"D"'
+| '"E"'
+| '"F"'
+| '"G"'
+| '"H"'
+| '"I"'
+| '"J"'
+| '"K"'
+| '"L"'
+| '"M"'
+| '"N"'
+| '"O"'
+| '"P"'
+| '"Q"'
+| '"R"'
+| '"S"'
+| '"T"'
+| '"U"'
+| '"V"'
+| '"W"'
+| '"X"'
+| '"Y"'
+| '"Z"'
+]]
+keyName.numbers = [[
+| '"Alpha1"'
+| '"Alpha2"'
+| '"Alpha3"'
+| '"Alpha4"'
+| '"Alpha5"'
+| '"Alpha6"'
+| '"Alpha7"'
+| '"Alpha8"'
+| '"Alpha9"'
+| '"Alpha0"'
+]]
+keyName.functionKeys = [[
+| '"F1"'
+| '"F2"'
+| '"F3"'
+| '"F4"'
+| '"F5"'
+| '"F6"'
+| '"F7"'
+| '"F8"'
+| '"F9"'
+| '"F10"'
+| '"F11"'
+| '"F12"'
+| '"F13"'
+| '"F14"'
+| '"F15"'
+]]
+keyName.keyPad = [[
+| '"Keypad1"'
+| '"Keypad2"'
+| '"Keypad3"'
+| '"Keypad4"'
+| '"Keypad5"'
+| '"Keypad6"'
+| '"Keypad7"'
+| '"Keypad8"'
+| '"Keypad9"'
+| '"Keypad0"'
+| '"KeypadPeriod"'
+| '"KeypadDivide"'
+| '"KeypadMultiply"'
+| '"KeypadMinus"'
+| '"KeypadPlus"'
+| '"KeypadEnter"'
+| '"KeypadEquals"'
+]]
+keyName.arrows = [[
+| '"UpArrow"'
+| '"DownArrow"'
+| '"RightArrow"'
+| '"LeftArrow"'
+]]
+keyName.special = [[
+| '"Backspace"'
+| '"Tab"'
+| '"Return"'
+| '"Pause"'
+| '"Space"'
+| '"Escape"'
+| '"Exclaim"'
+| '"At"'
+| '"Hash"'
+| '"Dollar"'
+| '"Caret"'
+| '"Ampersand"'
+| '"Asterisk"'
+| '"LeftParen"'
+| '"RightParen"'
+| '"Minus"'
+| '"Plus"'
+| '"Underscore"'
+| '"Equals"'
+| '"Colon"'
+| '"Semicolon"'
+| '"DoubleQuote"'
+| '"Quote"'
+| '"Comma"'
+| '"Period"'
+| '"Backslash"'
+| '"Slash"'
+| '"Question"'
+| '"Less"'
+| '"Greater"'
+| '"LeftBracket"'
+| '"RightBracket"'
+| '"BackQuote"'
+]]
+keyName.misc = [[
+| '"Insert"'
+| '"Home"'
+| '"Delete"'
+| '"End"'
+| '"PageUp"'
+| '"PageDown"'
+| '"Numlock"'
+| '"CapsLock"'
+| '"ScrollLock"'
+| '"RightShift"'
+| '"LeftShift"'
+| '"RightControl"'
+| '"LeftControl"'
+| '"RightAlt"'
+| '"LeftAlt"'
+| '"RightCommand"'
+| '"LeftCommand"'
+| '"RightApple"'
+| '"LeftApple"'
+| '"RightWindows"'
+| '"LeftWindows"'
+| '"AltGr"'
+| '"SysReq"'
+| '"Break"'
+| '"Menu"'
+]]
+keyName.mouse = [[
+| '"Mouse0"'
+| '"Mouse1"'
+| '"Mouse2"'
+| '"Mouse3"'
+| '"Mouse4"'
+| '"Mouse5"'
+| '"Mouse6"'
+]]
+]=]--
 
----@class Input
----@field Confirm keyState State of Z/Enter key.
----@field Cancel keyState State of X/LShift/RShift key.
----@field Menu keyState State of C/LCtrl key.
----@field Up keyState State of Up arrow/W key.
----@field Down keyState State of Down arrow/S key.
----@field Left keyState State of Left arrow/A key.
----@field Right keyState State of Right arrow/D key.
----@field MousePosX number Readonly. X position of the mouse relative to the bottom left of the screen (0 to 639).
----@field MousePosY number Readonly. Y position of the mouse relative to the bottom left of the screen (0 to 479).
----@field IsMouseInWindow boolean Readonly. True if mouse is in the window, false otherwise.
----@field MouseScroll number Readonly. Returns a number representing the change in the user's scroll wheel position (or movement supplied by the trackpad when using a Mac). 0 represents no movement, while a positive number means the user is scrolling up, and a negative number means the user is scrolling down.
-Input = {}
+---#DES 'Input'
+---@class Input: userdata
+Input = nil
 
---- Get the state of the given key.
----@param keyName keyName|string
----@return keyState
+---#DES 'Input.Confirm'
+---@type pressedState
+Input.Confirm = nil
+
+---#DES 'Input.Cancel'
+---@type pressedState
+Input.Cancel = nil
+
+---#DES 'Input.Menu'
+---@type pressedState
+Input.Menu = nil
+
+---#DES 'Input.Up'
+---@type pressedState
+Input.Up = nil
+
+---#DES 'Input.Down'
+---@type pressedState
+Input.Down = nil
+
+---#DES 'Input.Left'
+---@type pressedState
+Input.Left = nil
+
+---#DES 'Input.Right'
+---@type pressedState
+Input.Right = nil
+
+---#DES 'Input.Right'
+---@type pressedState
+Input.Right = nil
+
+---#DES 'Input.GetKey'
+---@param keyname keyName
+---@return pressedState state
 ---@nodiscard
-function Input.GetKey(keyName) end
+function Input.GetKey(keyname) end
+
+---#DES 'Input.MousePosX'
+---@type number
+Input.MousePosX = nil
+
+---#DES 'Input.MousePosY'
+---@type number
+Input.MousePosY = nil
+
+---#DES 'Input.IsMouseInWindow'
+---@type boolean
+Input.IsMouseInWindow = nil
+
+---#DES 'Input.MouseScroll'
+---@type number
+Input.MouseScroll = nil
