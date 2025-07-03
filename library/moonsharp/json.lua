@@ -13,15 +13,15 @@ function json.parse(jsonString) end
 
 ---Returns a json string with the contents of the specified table.
 ---src: https://www.moonsharp.org/additions.html
----@param table any
+---@param table table
 ---@return string jsonString
 function json.serialize(table) end
 
 ---Returns true if the value specified is a null read from a json
 ---src: https://www.moonsharp.org/additions.html
----@param val unknown
+---@param val any?
 ---@return boolean
-function json.isNull(val) end
+function json.isnull(val) end
 
 ---Returns a special value which is a representation of a null in a json
 ---src: https://www.moonsharp.org/additions.html
