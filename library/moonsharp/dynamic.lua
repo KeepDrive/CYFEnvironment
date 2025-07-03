@@ -1,6 +1,5 @@
 ---@meta
 ---@class dynamiclib
----TODO: Figure out return values
 dynamic = {}
 
 ---@alias expression_object userdata

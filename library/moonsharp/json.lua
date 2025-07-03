@@ -1,6 +1,5 @@
 ---@meta
 ---@class jsonlib
----TODO: Figure out how values are specified
 json = {}
 
 ---@alias nulltype userdata
