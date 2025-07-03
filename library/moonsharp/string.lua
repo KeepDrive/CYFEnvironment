@@ -10,7 +10,7 @@
 ---@nodiscard
 function string.unicode(s, i, j) end
 
----Retruns true if str2 is contained inside str1
+---Returns true if str2 is contained inside str1
 ---src: https://www.moonsharp.org/additions.html
 ---@param str1 string
 ---@param str2 string
